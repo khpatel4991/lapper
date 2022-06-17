@@ -1,26 +1,26 @@
-import { atom, selector } from 'recoil';
-import { SectorTime } from '../components/lapper';
-import isFinite from 'lodash/isFinite';
-import reduce from 'lodash/reduce';
-import toNumber from 'lodash/toNumber';
-import dayjs from 'dayjs';
-import durationPlugin, { Duration } from 'dayjs/plugin/duration';
+import { atom, selector } from "recoil";
+import { SectorTime } from "../components/lapper";
+import isFinite from "lodash/isFinite";
+import reduce from "lodash/reduce";
+import toNumber from "lodash/toNumber";
+import dayjs from "dayjs";
+import durationPlugin, { Duration } from "dayjs/plugin/duration";
 
 dayjs.extend(durationPlugin);
 
 const EmptyThreeSectorTime: SectorTime[] = [
-  { id: 's1' },
-  { id: 's2' },
-  { id: 's3' },
+  { id: "s1" },
+  { id: "s2" },
+  { id: "s3" },
 ];
 
 export const sectorTimesState = atom({
-  key: 'SectorTimes',
+  key: "SectorTimes",
   default: EmptyThreeSectorTime,
 });
 
 export const lapTimeStatsState = selector({
-  key: 'LaptTimeStats',
+  key: "LaptTimeStats",
   get: ({ get }) => {
     const sectorTimes = get(sectorTimesState);
     const isLapCompleted = sectorTimes.every(
@@ -31,7 +31,7 @@ export const lapTimeStatsState = selector({
       (acc, s) => acc.add(sectorTimeInMs(s)),
       dayjs.duration({ seconds: 0 })
     );
-    const lapTime = lapTimeDuration.format('m:ss.SSS');
+    const lapTime = lapTimeDuration.format("m:ss.SSS");
     return {
       isLapCompleted,
       lapTime,

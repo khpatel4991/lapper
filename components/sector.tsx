@@ -1,8 +1,8 @@
-import { SectorTime } from './lapper';
-import { Input } from './input';
-import { sectorTimesState } from '../lib/lapper-atoms';
-import { useRecoilState } from 'recoil';
-import { ChangeEventHandler, FocusEventHandler, useRef } from 'react';
+import { SectorTime } from "./lapper";
+import { Input } from "./input";
+import { sectorTimesState } from "../lib/lapper-atoms";
+import { useRecoilState } from "recoil";
+import { ChangeEventHandler, FocusEventHandler, useRef } from "react";
 
 interface Props {
   s: SectorTime;
@@ -27,7 +27,15 @@ export const Sector = ({ s, name, focused = false }: Props) => {
   const handleBlur: FocusEventHandler<HTMLInputElement> = ({
     target: { name, value },
   }) => {
-    console.log('blurred', { name, value });
+    if (value !== "") {
+      return;
+    }
+    const newList = replaceItemAtIndex(sectorTimes, index, {
+      ...s,
+      [name]: 0,
+    });
+
+    setSectorTimes(newList);
   };
   return (
     <div className="flex items-center py-2">
@@ -38,7 +46,7 @@ export const Sector = ({ s, name, focused = false }: Props) => {
           name="m"
           label="mm"
           placeholder="1"
-          value={s.m ?? ''}
+          value={s.m ?? ""}
           onChange={editSectorTime}
           onBlur={handleBlur}
         />
@@ -46,7 +54,7 @@ export const Sector = ({ s, name, focused = false }: Props) => {
           name="s"
           label="ss"
           placeholder="23"
-          value={s.s ?? ''}
+          value={s.s ?? ""}
           onChange={editSectorTime}
           onBlur={handleBlur}
         />
@@ -54,7 +62,7 @@ export const Sector = ({ s, name, focused = false }: Props) => {
           name="ms"
           label="sss"
           placeholder="234"
-          value={s.ms ?? ''}
+          value={s.ms ?? ""}
           onChange={editSectorTime}
           onBlur={handleBlur}
         />

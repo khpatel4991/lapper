@@ -3,7 +3,7 @@ import {
   FocusEventHandler,
   useEffect,
   useRef,
-} from 'react';
+} from "react";
 
 interface InputProps {
   name: string;
@@ -14,7 +14,7 @@ interface InputProps {
   onBlur: FocusEventHandler<HTMLInputElement>;
   onChange: ChangeEventHandler<HTMLInputElement>;
 }
-const isDev = process.env.NODE_ENV === 'development';
+const isDev = process.env.NODE_ENV === "development";
 
 export const Input = ({
   name,

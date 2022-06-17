@@ -1,7 +1,7 @@
-import { Sector } from './sector';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { lapTimeStatsState, sectorTimesState } from '../lib/lapper-atoms';
-import { AddSector } from './addsector';
+import { Sector } from "./sector";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { lapTimeStatsState, sectorTimesState } from "../lib/lapper-atoms";
+import { AddSector } from "./addsector";
 
 export interface SectorTime {
   id: string;
@@ -34,7 +34,7 @@ export const Lapper = () => {
       <AddSector handleClick={handleClick} />
       <div
         className={`flex justify-center text-xl antialiased items-center mt-10 p-2 ${
-          isLapCompleted ? 'bg-green-500' : 'bg-red-500'
+          isLapCompleted ? "bg-green-500" : "bg-red-500"
         }`}
       >
         {lapTime}
