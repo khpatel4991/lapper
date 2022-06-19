@@ -31,7 +31,7 @@ export const Lapper = () => {
       {sectorTimes.map((s, i) => (
         <Sector key={s.id} s={s} name={`Sector ${i + 1}`} focused={i === 0} />
       ))}
-      <AddSector handleClick={handleClick} />
+      <AddSector handleClick={handleClick} label="Add Sector" />
       <div
         className={`flex justify-center text-xl antialiased items-center mt-10 p-2 ${
           isLapCompleted ? "bg-green-500" : "bg-red-500"

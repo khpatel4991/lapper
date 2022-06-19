@@ -8,6 +8,7 @@ dotenv.config({
 
 /** @type {import('@graphql-codegen/cli').LoadCodegenConfigOptions} */
 module.exports = {
+  documents: "./components/**/*.tsx",
   schema: [
     {
       [`${process.env.HASURA_GRAPHQL_ENDPOINT}/v1/graphql`]: {

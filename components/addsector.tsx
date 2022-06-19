@@ -1,10 +1,11 @@
 import { MouseEventHandler } from "react";
 
 interface Props {
+  label: string;
   handleClick: MouseEventHandler<HTMLButtonElement>;
 }
 
-export const AddSector = ({ handleClick }: Props) => {
+export const AddSector = ({ label, handleClick }: Props) => {
   return (
     <div className="flex space-x-2 justify-center mt-10">
       <div>
@@ -30,7 +31,7 @@ export const AddSector = ({ handleClick }: Props) => {
               clipRule="evenodd"
             />
           </svg>
-          Add Sector
+          {label}
         </button>
       </div>
     </div>
