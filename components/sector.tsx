@@ -2,7 +2,7 @@ import { SectorTime } from "./lapper";
 import { Input } from "./input";
 import { sectorTimesState } from "../lib/lapper-atoms";
 import { useRecoilState } from "recoil";
-import { ChangeEventHandler, FocusEventHandler, useRef } from "react";
+import { ChangeEventHandler, FocusEventHandler } from "react";
 
 interface Props {
   s: SectorTime;
@@ -12,7 +12,6 @@ interface Props {
 
 export const Sector = ({ s, name, focused = false }: Props) => {
   const [sectorTimes, setSectorTimes] = useRecoilState(sectorTimesState);
-  const inputRef = useRef();
   const index = sectorTimes.findIndex((st) => st === s);
   const editSectorTime: ChangeEventHandler<HTMLInputElement> = ({
     target: { name, value },
